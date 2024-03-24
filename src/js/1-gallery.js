@@ -1,7 +1,7 @@
 import SimpleLightbox from 'simplelightbox';
 import 'simplelightbox/dist/simple-lightbox.min.css';
 
-const lightbox = new SimpleLightbox('.gallery a');
+
 
 const images = [
   {
@@ -91,7 +91,7 @@ function createImg(arr) {
     .join('');
 }
 
-
+const lightbox = new SimpleLightbox('.gallery a');
 
 
 
