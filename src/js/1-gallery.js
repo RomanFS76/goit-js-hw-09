@@ -75,23 +75,26 @@ galleryEl.insertAdjacentHTML('beforeend', createImg(images));
 
 function createImg(arr) {
     return arr
-    .map(
-      img => `
+      .map(
+        ({original, description, preview}) => `
         <li class="gallery-item">
-          <a class="gallery-link" href="${img.original}">
+          <a class="gallery-link" href="${original}">
               <img 
                 class="gallery-image" 
-                src="${img.preview}"
-                alt="${img.description}" 
+                src="${preview}"
+                alt="${description}" 
               />
           </a>
         </li>
     `
-    )
-    .join('');
+      )
+      .join('');
 }
 
-const lightbox = new SimpleLightbox('.gallery a');
+const lightbox = new SimpleLightbox('.gallery a', {
+  captionsData: 'alt',
+  captionDelay: 250,
+});
 
 
 
