@@ -1,2 +1,2 @@
-import"./assets/styles-7944339f.js";const e=document.querySelector(".feedback-form"),o=document.querySelector('input[type="email"]'),t=document.querySelector('textarea[name="message"]');console.log(e);console.log(o);console.log(t);
+import"./assets/styles-7944339f.js";const r=document.querySelector(".feedback-form");document.querySelector("input");document.querySelector("textarea");const c="feedback-form-state";r.addEventListener("submit",s);function s(t){t.preventDefault();const o=t.target.elements,a=o.email.value,m=o.message.value,e={};e.email=a.trim(),e.message=m.trim(),console.log(e),localStorage.setItem(c,JSON.stringify(e))}
 //# sourceMappingURL=commonHelpers2.js.map
