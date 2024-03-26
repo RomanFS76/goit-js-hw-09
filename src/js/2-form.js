@@ -1,6 +1,10 @@
 const formFeedback = document.querySelector('.feedback-form');
 
+const inputEl = document.querySelector('input');
+const textareaEl = document.querySelector('textarea');
+
 const STORAGE_KEY = 'feedback-form-state';
+const savedLocalValue = localStorage.getItem(STORAGE_KEY);
 
 formFeedback.addEventListener('input', handleInput);
 formFeedback.addEventListener('submit', handleSubmit);
@@ -14,13 +18,14 @@ function handleInput(event) {
     userData.message = event.currentTarget.elements.message.value;
     
     localStorage.setItem(STORAGE_KEY, JSON.stringify(userData));
+};
 
-    function checkField() {
-        const saved = localStorage.getItem(STORAGE_KEY);
-        if (saved) { 
-            event.currentTarget.elements.email.value = JSON.parse(saved.email);
-            event.currentTarget.elements.message.value = SON.parse(saved.message);
-        };
+function checkField() {
+    const currentArr = JSON.parse(savedLocalValue);
+
+    if (savedLocalValue) {
+        inputEl.value = currentArr.email;
+        textareaEl.value = currentArr.message;
     };
 };
 
@@ -28,11 +33,15 @@ function handleInput(event) {
 
 function handleSubmit(event) {
     event.preventDefault();
+
+    if (event.target.elements.email.value === '' || event.target.elements.message.value === '') { 
+        return alert('All form fields must be filled in');
+    };
+
     const savedLocalValue = localStorage.getItem(STORAGE_KEY);
     console.log(JSON.parse(savedLocalValue));
     localStorage.removeItem(STORAGE_KEY);
     formFeedback.reset();
-
 };
 
 
